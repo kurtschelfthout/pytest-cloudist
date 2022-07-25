@@ -1,11 +1,7 @@
-import os
 import pickle
-import sys
-from pprint import pprint
-from typing import Any
 
 import pytest
-from _pytest.config import Config, _prepareconfig
+from _pytest.config import Config
 
 
 def remote_initconfig(option_dict: dict, args):
@@ -17,25 +13,14 @@ def setup_config(config):
     config.option.looponfail = False
     config.option.usepdb = False
     config.option.cdist = "no"
-    # config.option.basetemp = basetemp
 
 
 def run(nodeid: str) -> tuple[list, list, list, list]:
-    # pprint(sys.path)
-    # print(os.listdir("/meadowrun/"))
-    # print(os.listdir("/meadowrun/code0"))
-    # print(os.listdir("/meadowrun/code1"))
-    # print(os.getcwd())
-
-    # TODO fix this somehow
-    nodeid = nodeid.replace("test/", "/meadowrun/code0/")
-
     option_dict = {}
     args = [nodeid]
     config = remote_initconfig(option_dict, args)
     config.args = args
     setup_config(config)
-    # pprint.pprint(args)
     worker = Worker(config)
     config.pluginmanager.register(worker)
     config.hook.pytest_cmdline_main(config=config)
@@ -92,8 +77,6 @@ def serialize_warning_message(warning_message):
         message_module = type(warning_message.message).__module__
         message_class_name = type(warning_message.message).__name__
         message_str = str(warning_message.message)
-        # check now if we can serialize the warning arguments (#349)
-        # if not, we will just use the exception message on the controller node
         try:
             pickle.dumps(warning_message.message.args)
         except pickle.PicklingError:

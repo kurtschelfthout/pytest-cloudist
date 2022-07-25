@@ -52,9 +52,6 @@ def pytest_configure(config):
 
         session = CloudSession(config)
         config.pluginmanager.register(session, "cloudsession")
-        # tr = config.pluginmanager.getplugin("terminalreporter")
-        # if tr:
-        #     tr.showfspath = False
 
 
 @pytest.hookimpl(tryfirst=True)

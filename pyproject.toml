@@ -15,7 +15,7 @@ python = "^3.8"
 pytest = "^7.1.2"
 # meadowrun = {path = "../meadowrun"}
 # meadowrun = "^0.1.13"
-meadowrun = {git="https://github.com/meadowdata/meadowrun.git", branch="main"}
+meadowrun = {git="https://github.com/kurtschelfthout/meadowrun.git", branch="pytest-changes"}
 
 [tool.poetry.dev-dependencies]
 black = "^22.6.0"

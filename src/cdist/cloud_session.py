@@ -18,12 +18,10 @@ class CloudSession:
         self.config = config
 
     async def meadowrun_map(self, items):
-        # pprint(sys.path)
         num_workers = self.config.option.num_workers
         cpu_per_worker = self.config.option.logical_cpu_per_worker
         memory_gb_per_worker = self.config.option.memory_gb_per_worker
         node_ids = [item.nodeid for item in items]
-        pprint(items[0].nodeid)
         results = await run_map(
             run,
             node_ids,
@@ -36,7 +34,6 @@ class CloudSession:
             ),
             await Deployment.mirror_local(),
         )
-        # pprint(results) foo
         for result in results:
             for tag, data in result:
                 if tag == "test_report":
