@@ -1,21 +1,19 @@
 [tool.poetry]
-name = "pytest-cdist"
+name = "pytest-cloudist"
 version = "0.1.0"
 description = ""
 authors = ["Kurt Schelfthout <kurt.schelfthout@gmail.com>"]
 packages = [
-    { include = "cdist", from = "src" },
+    { include = "cloudist", from = "src" },
 ]
 
 [tool.poetry.plugins."pytest11"]
-"cdist" = "cdist.plugin"
+"cloudist" = "cloudist.plugin"
 
 [tool.poetry.dependencies]
 python = "^3.8"
 pytest = "^7.1.2"
-# meadowrun = {path = "../meadowrun"}
-# meadowrun = "^0.1.13"
-meadowrun = {git="https://github.com/kurtschelfthout/meadowrun.git", branch="pytest-changes"}
+meadowrun = {git="https://github.com/meadowdata/meadowrun.git", branch="main"}
 
 [tool.poetry.dev-dependencies]
 black = "^22.6.0"

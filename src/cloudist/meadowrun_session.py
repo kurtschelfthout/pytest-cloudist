@@ -1,17 +1,12 @@
 import asyncio
-import os
-from pprint import pprint
-import sys
-from meadowrun import (
-    AllocCloudInstances,
-    Deployment,
-    run_map,
-)
-from cdist.remote_function import run
+
 import pytest
+from meadowrun import AllocCloudInstances, Deployment, run_map
+
+from cloudist.remote_function import run
 
 
-class CloudSession:
+class MeadowrunSession:
     """A pytest plugin which runs a distributed test session in the cloud."""
 
     def __init__(self, config):
@@ -77,8 +72,8 @@ class CloudSession:
 
 
 def deserialize_warning_message(data):
-    import warnings
     import importlib
+    import warnings
 
     if data["message_module"]:
         mod = importlib.import_module(data["message_module"])

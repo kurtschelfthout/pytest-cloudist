@@ -12,7 +12,7 @@ def remote_initconfig(option_dict: dict, args):
 def setup_config(config):
     config.option.looponfail = False
     config.option.usepdb = False
-    config.option.cdist = "no"
+    config.option.cloudist = "no"
 
 
 def run(nodeid: str) -> tuple[list, list, list, list]:

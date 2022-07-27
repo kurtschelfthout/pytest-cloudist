@@ -306,9 +306,9 @@ typing-extensions = "^4.1.1"
 
 [package.source]
 type = "git"
-url = "https://github.com/kurtschelfthout/meadowrun.git"
-reference = "pytest-changes"
-resolved_reference = "604646de55acd1cb4e2907d52aa4c800d664d3cb"
+url = "https://github.com/meadowdata/meadowrun.git"
+reference = "main"
+resolved_reference = "b4638d09a0782b4669c77a21e181ca0b18001e4a"
 
 [[package]]
 name = "multidict"
@@ -557,7 +557,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "7685f55efb72810123c210ad840aaae268050ace764755058b789e3f1a12d782"
+content-hash = "3fcdde44e7d085ea04b4de66c3bb80a5fbbfd4bed1585d3e5290c4f94080219e"
 
 [metadata.files]
 aiobotocore = [
