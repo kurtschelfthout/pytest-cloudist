@@ -8,14 +8,14 @@ def pytest_addoption(parser):
     )
     group.addoption(
         "--cloudist",
-        metavar="distmode",
         action="store",
-        choices=["test", "no"],
+        choices=["test", "file", "no"],
         dest="cloudist",
         default="no",
         help=(
-            "set mode for distributing tests to workers.\n\n"
+            "Set mode for distributing tests to workers.\n\n"
             "test: send each test to a worker separately.\n\n"
+            "file: send each test file to a worker separately.\n\n"
             "(default) no: run tests inprocess, don't distribute."
         ),
     )
@@ -45,15 +45,28 @@ def pytest_addoption(parser):
         default=2.0,
         help="The amount of memory (in GiB) needed per worker.",
     )
+    group.addoption(
+        "--interrupt-prob",
+        dest="interruption_probability_threshold",
+        action="store",
+        default=80,
+        help="The estimated probability that spot instance will get interrupted by AWS. Set to 0 for on-demand instances, which will be up to 10x more expensive.",
+    )
+    group.addoption(
+        "--extra-files",
+        dest="extra_files",
+        action="append",
+        help="Extra files to copy as to the remote machines, if needed. .py files on sys.path are copied automatically.",
+    )
 
 
 @pytest.hookimpl(trylast=True)
 def pytest_configure(config):
     if config.getoption("cloudist") != "no" and not config.getvalue("collectonly"):
-        from cloudist.cloud_session import CloudSession
+        from cloudist.meadowrun_session import MeadowrunSession
 
-        session = CloudSession(config)
-        config.pluginmanager.register(session, "cloudsession")
+        session = MeadowrunSession(config)
+        config.pluginmanager.register(session, "meadowrunsession")
 
 
 @pytest.hookimpl(tryfirst=True)

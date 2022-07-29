@@ -12,22 +12,36 @@ class MeadowrunSession:
     def __init__(self, config):
         self.config = config
 
-    async def meadowrun_map(self, items):
+    async def meadowrun_map(self, items: list):
         num_workers = self.config.option.num_workers
+        interruption_probability_threshold = (
+            self.config.option.interruption_probability_threshold
+        )
         cpu_per_worker = self.config.option.logical_cpu_per_worker
         memory_gb_per_worker = self.config.option.memory_gb_per_worker
-        node_ids = [item.nodeid for item in items]
+        chunk_method = self.config.option.cloudist
+        extra_files = self.config.option.extra_files
+        # pprint(extra_files)
+        # print(dir(items[0]))
+        if chunk_method == "test":
+            node_ids = [item.nodeid for item in items]
+        elif chunk_method == "file":
+            node_ids = list(
+                dict.fromkeys(item.nodeid.split("::", 1)[0] for item in items)
+            )
+        else:
+            raise ValueError(f"Unknow cloudist option {chunk_method}")
         results = await run_map(
             run,
             node_ids,
             AllocCloudInstances(
                 cloud_provider="EC2",
-                interruption_probability_threshold=80,
+                interruption_probability_threshold=interruption_probability_threshold,
                 logical_cpu_required_per_task=cpu_per_worker,
                 memory_gb_required_per_task=memory_gb_per_worker,
                 num_concurrent_tasks=num_workers,
             ),
-            await Deployment.mirror_local(),
+            await Deployment.mirror_local(working_directory_globs=extra_files),
         )
         for result in results:
             for tag, data in result:

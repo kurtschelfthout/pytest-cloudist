@@ -1,7 +1,8 @@
+import pathlib
 from time import sleep
 import warnings
 
-SLEEP = 10
+SLEEP = 1
 
 
 def test_one():
@@ -25,6 +26,18 @@ def test_four():
     assert 1 == 1
 
 
-# def test_five():
-#     sleep(SLEEP)
-#     assert 1 == 1
+def test_five():
+    sleep(SLEEP)
+    assert 1 == 1
+
+
+def test_six():
+    sleep(SLEEP)
+    assert 1 == 1
+
+
+def test_extra_files():
+    txt_file = pathlib.Path(__file__).parent / "extrafile.txt"
+    with txt_file.open("r") as f:
+        lines = f.readlines()
+        assert lines == ["A\n", "B"]
