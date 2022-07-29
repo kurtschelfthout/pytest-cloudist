@@ -1,5 +1,5 @@
 import pickle
-from typing import Union
+from typing import List, Tuple, Union
 
 import pytest
 from _pytest.config import Config
@@ -19,7 +19,7 @@ def setup_config(config):
 # INIT_ONCE = False
 
 
-def run(nodeids: Union[str, list[str]]) -> tuple[list, list, list, list]:
+def run(nodeids: Union[str, List[str]]) -> Tuple[List, List, List, List]:
     # global INIT_ONCE
     # if not INIT_ONCE:
     #     INIT_ONCE = True
