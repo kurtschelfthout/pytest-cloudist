@@ -42,6 +42,7 @@ def pytest_addoption(parser):
         dest="memory_gb_per_worker",
         metavar="memory_gb_per_worker",
         action="store",
+        type=float,
         default=2.0,
         help="The amount of memory (in GiB) needed per worker.",
     )
