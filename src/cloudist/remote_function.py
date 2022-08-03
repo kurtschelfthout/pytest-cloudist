@@ -1,5 +1,5 @@
 import pickle
-from typing import List, Tuple, Union
+from typing import List, Optional, Tuple, Union
 
 import pytest
 from _pytest.config import Config
@@ -16,15 +16,12 @@ def setup_config(config):
     config.option.cloudist = "no"
 
 
-# INIT_ONCE = False
-
-
-def run(nodeids: Union[str, List[str]]) -> Tuple[List, List, List, List]:
-    # global INIT_ONCE
-    # if not INIT_ONCE:
-    #     INIT_ONCE = True
-    #     print("init...just once!")
+def run(
+    marker_expr: Optional[str], nodeids: Union[str, List[str]]
+) -> Tuple[List, List, List, List]:
     option_dict = {}
+    if marker_expr is not None:
+        option_dict["markexpr"] = marker_expr
     args = [nodeids] if isinstance(nodeids, str) else nodeids
     config = remote_initconfig(option_dict, args)
     config.args = args

@@ -1,4 +1,5 @@
 import asyncio
+from pprint import pprint
 
 import pytest
 from meadowrun import AllocCloudInstances, Deployment, run_map
@@ -20,9 +21,12 @@ class MeadowrunSession:
         cpu_per_worker = self.config.option.logical_cpu_per_worker
         memory_gb_per_worker = self.config.option.memory_gb_per_worker
         chunk_method = self.config.option.cloudist
-        extra_files = self.config.option.extra_files
-        # pprint(extra_files)
-        # print(dir(items[0]))
+
+        extra_files = self.config.option.extra_files or []
+        marker_expression = self.config.option.markexpr
+        if self.config.inipath is not None:
+            extra_files.append(str(self.config.inipath))
+
         if chunk_method == "test":
             node_ids = [item.nodeid for item in items]
         elif chunk_method == "file":
@@ -32,7 +36,7 @@ class MeadowrunSession:
         else:
             raise ValueError(f"Unknow cloudist option {chunk_method}")
         results = await run_map(
-            run,
+            lambda node_ids: run(marker_expression, node_ids),
             node_ids,
             AllocCloudInstances(
                 cloud_provider="EC2",
