@@ -307,8 +307,8 @@ typing-extensions = "^4.1.1"
 [package.source]
 type = "git"
 url = "https://github.com/kurtschelfthout/meadowrun.git"
-reference = "pip-poetry"
-resolved_reference = "280d035bab007b779c6011bfc4c3dc0db88f1ab3"
+reference = "main"
+resolved_reference = "f6632fc9a0e2e3c335b9380476c887474b5ca02e"
 
 [[package]]
 name = "multidict"
@@ -557,7 +557,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "7130ce6d0dede72115df3c20b53cc637cbe1a8f8f37f0ce9587af0b8c5ef6319"
+content-hash = "a1e4124e887eed2375a07321ede687ebb4246e297f00f97dc8fdf1799af8f326"
 
 [metadata.files]
 aiobotocore = [

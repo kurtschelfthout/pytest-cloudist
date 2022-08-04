@@ -1,4 +1,5 @@
 import pickle
+import subprocess
 from typing import List, Optional, Tuple, Union
 
 import pytest
@@ -16,9 +17,18 @@ def setup_config(config):
     config.option.cloudist = "no"
 
 
+_ran_init_command = False
+
+
 def run(
-    marker_expr: Optional[str], nodeids: Union[str, List[str]]
+    init_command: Optional[str],
+    marker_expr: Optional[str],
+    nodeids: Union[str, List[str]],
 ) -> Tuple[List, List, List, List]:
+    global _ran_init_command
+    if not _ran_init_command:
+        subprocess.run(init_command, shell=True, check=True)
+        _ran_init_command = True
     option_dict = {}
     if marker_expr is not None:
         option_dict["markexpr"] = marker_expr

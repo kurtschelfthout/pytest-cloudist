@@ -13,7 +13,7 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.8"
 pytest = "^7.1.2"
-# meadowrun = {git="https://github.com/kurtschelfthout/meadowrun.git", branch="pip-poetry"}
+# meadowrun = {git="https://github.com/kurtschelfthout/meadowrun.git", branch="main"}
 
 [tool.poetry.dev-dependencies]
 black = "^22.6.0"

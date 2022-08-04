@@ -27,6 +27,8 @@ class MeadowrunSession:
         if self.config.inipath is not None:
             extra_files.append(str(self.config.inipath))
 
+        init_command = self.config.option.init_command
+
         if chunk_method == "test":
             node_ids = [item.nodeid for item in items]
         elif chunk_method == "file":
@@ -36,7 +38,7 @@ class MeadowrunSession:
         else:
             raise ValueError(f"Unknow cloudist option {chunk_method}")
         results = await run_map(
-            lambda node_ids: run(marker_expression, node_ids),
+            lambda node_ids: run(init_command, marker_expression, node_ids),
             node_ids,
             AllocCloudInstances(
                 cloud_provider="EC2",

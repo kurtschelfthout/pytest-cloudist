@@ -59,6 +59,12 @@ def pytest_addoption(parser):
         action="append",
         help="Extra files to copy as to the remote machines, if needed. .py files on sys.path are copied automatically.",
     )
+    group.addoption(
+        "--cd-init-command",
+        dest="init_command",
+        action="store",
+        help="Initialization command to run once per worker",
+    )
 
 
 @pytest.hookimpl(trylast=True)
