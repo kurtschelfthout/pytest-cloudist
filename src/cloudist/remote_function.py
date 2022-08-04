@@ -26,7 +26,7 @@ def run(
     nodeids: Union[str, List[str]],
 ) -> Tuple[List, List, List, List]:
     global _ran_init_command
-    if not _ran_init_command:
+    if not _ran_init_command and init_command:
         subprocess.run(init_command, shell=True, check=True)
         _ran_init_command = True
     option_dict = {}
