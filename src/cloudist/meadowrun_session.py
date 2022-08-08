@@ -2,7 +2,12 @@ import asyncio
 from pprint import pprint
 
 import pytest
-from meadowrun import AllocCloudInstances, Deployment, run_map
+from meadowrun import (
+    AllocCloudInstance,
+    Resources,
+    Deployment,
+    run_map,
+)
 
 from cloudist.remote_function import run
 
@@ -40,14 +45,16 @@ class MeadowrunSession:
         results = await run_map(
             lambda node_ids: run(init_command, marker_expression, node_ids),
             node_ids,
-            AllocCloudInstances(
-                cloud_provider="EC2",
-                interruption_probability_threshold=interruption_probability_threshold,
-                logical_cpu_required_per_task=cpu_per_worker,
-                memory_gb_required_per_task=memory_gb_per_worker,
-                num_concurrent_tasks=num_workers,
+            host=AllocCloudInstance("EC2"),
+            resources_per_task=Resources(
+                max_eviction_rate=interruption_probability_threshold,
+                logical_cpu=cpu_per_worker,
+                memory_gb=memory_gb_per_worker,
             ),
-            await Deployment.mirror_local(working_directory_globs=extra_files),
+            num_concurrent_tasks=num_workers,
+            deployment=await Deployment.mirror_local(
+                working_directory_globs=extra_files
+            ),
         )
         for result in results:
             for tag, data in result:
