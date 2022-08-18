@@ -1,6 +1,6 @@
 import pickle
 import subprocess
-from typing import List, Optional, Tuple, Union
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 import pytest
 from _pytest.config import Config
@@ -45,7 +45,7 @@ def run(
 class Worker:
     def __init__(self, config):
         self.config = config
-        self.messages = []
+        self.messages: List[Tuple, Dict[str, Any]] = []
 
     @pytest.hookimpl
     def pytest_collectreport(self, report):

@@ -2,12 +2,7 @@ import asyncio
 from pprint import pprint
 
 import pytest
-from meadowrun import (
-    AllocCloudInstance,
-    Resources,
-    Deployment,
-    run_map,
-)
+from meadowrun import AllocCloudInstance, Resources, Deployment, run_map_as_completed
 
 from cloudist.remote_function import run
 
@@ -42,7 +37,7 @@ class MeadowrunSession:
             )
         else:
             raise ValueError(f"Unknow cloudist option {chunk_method}")
-        results = await run_map(
+        run_map_res = await run_map_as_completed(
             lambda node_ids: run(init_command, marker_expression, node_ids),
             node_ids,
             host=AllocCloudInstance("EC2"),
@@ -56,8 +51,11 @@ class MeadowrunSession:
                 working_directory_globs=extra_files
             ),
         )
-        for result in results:
-            for tag, data in result:
+        async for task_result in run_map_res:
+            # for tag, data in result:
+            messages = task_result.result_or_raise()
+            # pprint(result)
+            for tag, data in messages:
                 if tag == "test_report":
                     report = self.config.hook.pytest_report_from_serializable(
                         config=self.config, data=data

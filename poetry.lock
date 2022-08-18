@@ -68,7 +68,7 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "asyncssh"
-version = "2.11.0"
+version = "2.12.0"
 description = "AsyncSSH: Asynchronous SSHv2 client and server library"
 category = "main"
 optional = false
@@ -241,15 +241,15 @@ test = ["pytest (>=6.2.0)", "pytest-benchmark", "pytest-cov", "pytest-subtests",
 
 [[package]]
 name = "filelock"
-version = "3.7.1"
+version = "3.8.0"
 description = "A platform independent file lock."
 category = "main"
 optional = false
 python-versions = ">=3.7"
 
 [package.extras]
-docs = ["furo (>=2021.8.17b43)", "sphinx (>=4.1)", "sphinx-autodoc-typehints (>=1.12)"]
-testing = ["covdefaults (>=1.2.0)", "coverage (>=4)", "pytest (>=4)", "pytest-cov", "pytest-timeout (>=1.4.2)"]
+docs = ["furo (>=2022.6.21)", "sphinx (>=5.1.1)", "sphinx-autodoc-typehints (>=1.19.1)"]
+testing = ["covdefaults (>=2.2)", "coverage (>=6.4.2)", "pytest (>=7.1.2)", "pytest-cov (>=3)", "pytest-timeout (>=2.1)"]
 
 [[package]]
 name = "frozenlist"
@@ -285,7 +285,7 @@ python-versions = ">=3.7"
 
 [[package]]
 name = "kubernetes-asyncio"
-version = "24.2.0"
+version = "24.2.1"
 description = "Kubernetes asynchronous python client"
 category = "main"
 optional = false
@@ -324,8 +324,8 @@ typing-extensions = "^4.1.1"
 [package.source]
 type = "git"
 url = "https://github.com/kurtschelfthout/meadowrun.git"
-reference = "run-map-new"
-resolved_reference = "468cfded91df49d8d5f819061daddc12570ad526"
+reference = "run-map-more-async"
+resolved_reference = "d3018df0f07336ad4dd4d30d69010600cd0219dd"
 
 [[package]]
 name = "multidict"
@@ -582,7 +582,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "9f94bced8868d9e0b09df4835b9882b49131d32a447b7121bf1d27e712101350"
+content-hash = "ed18df4cdfeff9b85bbad09dc95d9b92d19706e0720fed962b54cc0c838397a9"
 
 [metadata.files]
 aiobotocore = [
@@ -675,7 +675,10 @@ async-timeout = [
     {file = "async-timeout-4.0.2.tar.gz", hash = "sha256:2163e1640ddb52b7a8c80d0a67a08587e5d245cc9c553a74a847056bc2976b15"},
     {file = "async_timeout-4.0.2-py3-none-any.whl", hash = "sha256:8ca1e4fcf50d07413d66d1a5e416e42cfdf5851c981d679a09851a6853383b3c"},
 ]
-asyncssh = []
+asyncssh = [
+    {file = "asyncssh-2.12.0-py3-none-any.whl", hash = "sha256:6841c4242c606fd51188c974ec2f4887efeec67ecdfa5b84140711dacd985ab3"},
+    {file = "asyncssh-2.12.0.tar.gz", hash = "sha256:274101322c4b941823aeed8e1ab6e7be5191686c6db2d2bd35afeba30505e780"},
+]
 atomicwrites = []
 attrs = [
     {file = "attrs-22.1.0-py2.py3-none-any.whl", hash = "sha256:86efa402f67bf2df34f51a335487cf46b1ec130d02b8d39fd248abfd30da551c"},
@@ -802,8 +805,8 @@ colorama = [
 ]
 cryptography = []
 filelock = [
-    {file = "filelock-3.7.1-py3-none-any.whl", hash = "sha256:37def7b658813cda163b56fc564cdc75e86d338246458c4c28ae84cabefa2404"},
-    {file = "filelock-3.7.1.tar.gz", hash = "sha256:3a0fd85166ad9dbab54c9aec96737b744106dc5f15c0b09a6744a445299fcf04"},
+    {file = "filelock-3.8.0-py3-none-any.whl", hash = "sha256:617eb4e5eedc82fc5f47b6d61e4d11cb837c56cb4544e39081099fa17ad109d4"},
+    {file = "filelock-3.8.0.tar.gz", hash = "sha256:55447caa666f2198c5b6b13a26d2084d26fa5b115c00d065664b2124680c4edc"},
 ]
 frozenlist = [
     {file = "frozenlist-1.3.1-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:5f271c93f001748fc26ddea409241312a75e13466b06c94798d1a341cf0e6989"},
@@ -879,8 +882,8 @@ jmespath = [
     {file = "jmespath-1.0.1.tar.gz", hash = "sha256:90261b206d6defd58fdd5e85f478bf633a2901798906be2ad389150c5c60edbe"},
 ]
 kubernetes-asyncio = [
-    {file = "kubernetes_asyncio-24.2.0-py3-none-any.whl", hash = "sha256:345b2356150598ad93a5875244250676c8552b1f70fe659b1499d8e554282ea7"},
-    {file = "kubernetes_asyncio-24.2.0.tar.gz", hash = "sha256:c5914589823406ae33f446eb3bd1dd3dbefc235a927edb49f7e536c9b02ba852"},
+    {file = "kubernetes_asyncio-24.2.1-py3-none-any.whl", hash = "sha256:5813a16f487c70e9e74a53ac0b11be7e1a8980917bbf033557820b12577fecea"},
+    {file = "kubernetes_asyncio-24.2.1.tar.gz", hash = "sha256:59abc6a62466f26bda57dd0a181e392ce30e1ac2f01b95aeae8f3ab384ec80b0"},
 ]
 meadowrun = []
 multidict = [
