@@ -301,7 +301,7 @@ urllib3 = ">=1.24.2"
 
 [[package]]
 name = "meadowrun"
-version = "0.2.2a1"
+version = "0.2.2"
 description = "The easiest way to run python code on one or more remote machines"
 category = "main"
 optional = false
@@ -324,8 +324,8 @@ typing-extensions = "^4.1.1"
 [package.source]
 type = "git"
 url = "https://github.com/kurtschelfthout/meadowrun.git"
-reference = "run-map-more-async"
-resolved_reference = "853d3129f0625fdbf1e6e4b2e91dea0089481a9b"
+reference = "main"
+resolved_reference = "0f1c59dade80fdb07170847f0f09fd4cb3c7b500"
 
 [[package]]
 name = "multidict"
@@ -582,7 +582,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "ed18df4cdfeff9b85bbad09dc95d9b92d19706e0720fed962b54cc0c838397a9"
+content-hash = "a1e4124e887eed2375a07321ede687ebb4246e297f00f97dc8fdf1799af8f326"
 
 [metadata.files]
 aiobotocore = [

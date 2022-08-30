@@ -25,10 +25,12 @@ def run(
     marker_expr: Optional[str],
     nodeids: Union[str, List[str]],
 ) -> Tuple[List, List, List, List]:
+    # start = monotonic()
     global _ran_init_command
     if not _ran_init_command and init_command:
         subprocess.run(init_command, shell=True, check=True)
         _ran_init_command = True
+
     option_dict = {}
     if marker_expr is not None:
         option_dict["markexpr"] = marker_expr
@@ -39,6 +41,7 @@ def run(
     worker = Worker(config)
     config.pluginmanager.register(worker)
     config.hook.pytest_cmdline_main(config=config)
+    # print(f"run invocation took {monotonic()-start} secs")
     return worker.messages
 
 
@@ -46,6 +49,7 @@ class Worker:
     def __init__(self, config):
         self.config = config
         self.messages: List[Tuple, Dict[str, Any]] = []
+        self.queue = Queue()
 
     @pytest.hookimpl
     def pytest_collectreport(self, report):

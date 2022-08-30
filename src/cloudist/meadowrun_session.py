@@ -37,6 +37,15 @@ class MeadowrunSession:
             )
         else:
             raise ValueError(f"Unknow cloudist option {chunk_method}")
+
+        tasks_per_worker_target = self.config.option.tasks_per_worker_target
+        if tasks_per_worker_target != -1:
+            chunk_size = len(node_ids) // (tasks_per_worker_target * num_workers)
+            chunked_node_ids = []
+            for i in range(0, len(node_ids), chunk_size):
+                chunked_node_ids.append(node_ids[i : i + chunk_size])
+            node_ids = chunked_node_ids
+
         run_map_res = await run_map_as_completed(
             lambda node_ids: run(init_command, marker_expression, node_ids),
             node_ids,

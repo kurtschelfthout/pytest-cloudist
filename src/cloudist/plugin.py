@@ -20,6 +20,19 @@ def pytest_addoption(parser):
         ),
     )
     group.addoption(
+        "--cd-tasks-per-worker-target",
+        action="store",
+        dest="tasks_per_worker_target",
+        metavar="tasks_per_worker_target",
+        type=int,
+        default=-1,
+        help=(
+            "The number of tasks to target per worker. "
+            "This number determines whether individual tests or files are grouped and sent as a chunk to the test worker. "
+            "Chunking is normally more efficient, but may affect load balancing and worsen the effect of stragglers."
+        ),
+    )
+    group.addoption(
         "--cd-num-workers",
         dest="num_workers",
         metavar="num_workers",
