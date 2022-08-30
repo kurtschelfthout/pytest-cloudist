@@ -49,7 +49,6 @@ class Worker:
     def __init__(self, config):
         self.config = config
         self.messages: List[Tuple, Dict[str, Any]] = []
-        self.queue = Queue()
 
     @pytest.hookimpl
     def pytest_collectreport(self, report):
