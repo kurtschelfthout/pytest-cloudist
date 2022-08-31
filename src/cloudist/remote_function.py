@@ -1,3 +1,4 @@
+from argparse import Namespace
 import pickle
 import subprocess
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -12,7 +13,6 @@ def remote_initconfig(option_dict: dict, args):
 
 
 def setup_config(config):
-    config.option.looponfail = False
     config.option.usepdb = False
     config.option.cloudist = "no"
 
@@ -22,18 +22,20 @@ _ran_init_command = False
 
 def run(
     init_command: Optional[str],
-    marker_expr: Optional[str],
+    # marker_expr: Optional[str],
+    option_dict: Dict[str, Any],
     nodeids: Union[str, List[str]],
 ) -> Tuple[List, List, List, List]:
     # start = monotonic()
+    # options.
     global _ran_init_command
     if not _ran_init_command and init_command:
         subprocess.run(init_command, shell=True, check=True)
         _ran_init_command = True
 
-    option_dict = {}
-    if marker_expr is not None:
-        option_dict["markexpr"] = marker_expr
+    # option_dict = {}
+    # if marker_expr is not None:
+    #     option_dict["markexpr"] = marker_expr
     args = [nodeids] if isinstance(nodeids, str) else nodeids
     config = remote_initconfig(option_dict, args)
     config.args = args

@@ -14,6 +14,7 @@ class MeadowrunSession:
         self.config = config
 
     async def meadowrun_map(self, items: list):
+        pprint(self.config.option)
         num_workers = self.config.option.num_workers
         interruption_probability_threshold = (
             self.config.option.interruption_probability_threshold
@@ -23,7 +24,7 @@ class MeadowrunSession:
         chunk_method = self.config.option.cloudist
 
         extra_files = self.config.option.extra_files or []
-        marker_expression = self.config.option.markexpr
+        option_dict = vars(self.config.option)
         if self.config.inipath is not None:
             extra_files.append(str(self.config.inipath))
 
@@ -47,7 +48,7 @@ class MeadowrunSession:
             node_ids = chunked_node_ids
 
         run_map_res = await run_map_as_completed(
-            lambda node_ids: run(init_command, marker_expression, node_ids),
+            lambda node_ids: run(init_command, option_dict, node_ids),
             node_ids,
             host=AllocCloudInstance("EC2"),
             resources_per_task=Resources(
