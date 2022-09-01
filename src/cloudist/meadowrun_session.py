@@ -1,8 +1,7 @@
 import asyncio
-from pprint import pprint
 
 import pytest
-from meadowrun import AllocCloudInstance, Resources, Deployment, run_map_as_completed
+from meadowrun import AllocCloudInstance, Deployment, Resources, run_map_as_completed
 
 from cloudist.remote_function import run
 
@@ -14,7 +13,6 @@ class MeadowrunSession:
         self.config = config
 
     async def meadowrun_map(self, items: list):
-        pprint(self.config.option)
         num_workers = self.config.option.num_workers
         interruption_probability_threshold = (
             self.config.option.interruption_probability_threshold
