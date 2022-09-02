@@ -1,10 +1,32 @@
 [tool.poetry]
 name = "pytest-cloudist"
 version = "0.1.0"
-description = ""
+description = "Distribute tests to cloud machines without fuss"
+readme = "README.md"
 authors = ["Kurt Schelfthout <kurt.schelfthout@gmail.com>"]
+homepage = "https://github.com/kurtschelfthout/pytest-cloudist"
+repository = "https://github.com/kurtschelfthout/pytest-cloudist"
 packages = [
     { include = "cloudist", from = "src" },
+]
+license = "MIT"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: Pytest",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: MacOS :: MacOS X",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: Utilities",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
 ]
 
 [tool.poetry.plugins."pytest11"]
