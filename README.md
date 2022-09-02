@@ -1,7 +1,6 @@
-
 # pytest-cloudist
 
-pytest-cloudist is a pytest plugin to that distributes your tests to AWS EC2 machines with a minimum of fuss. It is a thin wrapper around [Meadowrun][hhtps://meadowrun.io], which does the heavy lifting of starting EC2 instances and synchronizing environment and code.
+pytest-cloudist is a pytest plugin to that distributes your tests to AWS EC2 machines with a minimum of fuss. It is a thin wrapper around [Meadowrun](https://meadowrun.io), which does the heavy lifting of starting EC2 instances and synchronizing environment and code.
 
 ## Installation
 
