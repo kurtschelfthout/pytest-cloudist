@@ -4,13 +4,21 @@ pytest-cloudist is a pytest plugin to that distributes your tests to AWS EC2 mac
 
 ## Installation
 
-Simply pip install alongside pytest:
+Assuming you already have an AWS account configured, install pytest-cloudist:
 
 ```
 python -m pip install pytest-cloudist
 ```
 
-That makes the following command line arguments on `pytest` available:
+And one-time install meadowrun into your AWS account:
+
+```
+meadowrun-manage-ec2 install
+```
+
+If you get stuck, for more information on configuring AWS and Meadowrun please visit https://docs.meadowrun.io/en/stable/tutorial/install/
+
+Now the following command line arguments on `pytest` are available:
 
 ```
 Distributed testing in the cloud using Meadowrun:
