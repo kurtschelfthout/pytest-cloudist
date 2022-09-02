@@ -301,31 +301,24 @@ urllib3 = ">=1.24.2"
 
 [[package]]
 name = "meadowrun"
-version = "0.2.2"
+version = "0.2.4"
 description = "The easiest way to run python code on one or more remote machines"
 category = "main"
 optional = false
-python-versions = "^3.7"
-develop = false
+python-versions = ">=3.7,<4.0"
 
 [package.dependencies]
-aiobotocore = "^2.1.2"
-aiohttp = "^3.8.0"
-asyncssh = "^2.11.0"
-boto3 = "^1.21.21"
-cloudpickle = "^2.0.0"
-filelock = "^3.6.0"
-kubernetes-asyncio = "^24.2.0"
-protobuf = "^3.18.1"
-psutil = "^5.8.0"
-requests = "^2.27.1"
-typing-extensions = "^4.1.1"
-
-[package.source]
-type = "git"
-url = "https://github.com/kurtschelfthout/meadowrun.git"
-reference = "main"
-resolved_reference = "0f1c59dade80fdb07170847f0f09fd4cb3c7b500"
+aiobotocore = ">=2.1.2,<3.0.0"
+aiohttp = ">=3.8.0,<4.0.0"
+asyncssh = ">=2.11.0,<3.0.0"
+boto3 = ">=1.21.21,<2.0.0"
+cloudpickle = ">=2.0.0,<3.0.0"
+filelock = ">=3.6.0,<4.0.0"
+kubernetes-asyncio = ">=24.2.0,<25.0.0"
+protobuf = ">=3.18.1,<4.0.0"
+psutil = ">=5.8.0,<6.0.0"
+requests = ">=2.27.1,<3.0.0"
+typing-extensions = ">=4.1.1,<5.0.0"
 
 [[package]]
 name = "multidict"
@@ -582,7 +575,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "a1e4124e887eed2375a07321ede687ebb4246e297f00f97dc8fdf1799af8f326"
+content-hash = "627304aac4592eeaa56604d56cb6bea84879fa3e30766874c5f8c49bad10ff73"
 
 [metadata.files]
 aiobotocore = [
@@ -885,7 +878,10 @@ kubernetes-asyncio = [
     {file = "kubernetes_asyncio-24.2.2-py3-none-any.whl", hash = "sha256:4df5f5d7d1fa2b7e9f772d661b46378f9e4158e62f3c730c165b315d8e3b51ea"},
     {file = "kubernetes_asyncio-24.2.2.tar.gz", hash = "sha256:0a8ad5f31bcb2a7b3235b754fe9c83055e66970c68326b42dbee289632bd9f0c"},
 ]
-meadowrun = []
+meadowrun = [
+    {file = "meadowrun-0.2.4-py3-none-any.whl", hash = "sha256:f23706ec42c03a0b521156df39355a8cb7c49c4bdbbeef5886094e583c6a10bf"},
+    {file = "meadowrun-0.2.4.tar.gz", hash = "sha256:b9068340b799b39b1fccb0fb00fbbbe786095944f3a13b168a0d886873cea913"},
+]
 multidict = [
     {file = "multidict-6.0.2-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:0b9e95a740109c6047602f4db4da9949e6c5945cefbad34a1299775ddc9a62e2"},
     {file = "multidict-6.0.2-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:ac0e27844758d7177989ce406acc6a83c16ed4524ebc363c1f748cba184d89d3"},
