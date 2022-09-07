@@ -2,6 +2,8 @@
 
 pytest-cloudist is a pytest plugin that distributes your tests to AWS EC2 machines with a minimum of fuss. It is a thin wrapper around [Meadowrun](https://meadowrun.io), which does the heavy lifting of starting EC2 instances and synchronizing environment and code.
 
+For more context and explanation, [Running pytest in the Cloud for Fun and Profit](https://medium.com/@meadowrun/running-pytest-in-the-cloud-for-fun-and-profit-10871419bc5a) describes how to use pytest-cloudist to distribute pandas' unit tests to AWS EC2 cloud machines.
+
 ## Installation
 
 Assuming you already have an AWS account configured, install pytest-cloudist:
