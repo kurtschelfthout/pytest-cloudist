@@ -35,7 +35,8 @@ classifiers = [
 [tool.poetry.dependencies]
 python = "^3.8"
 pytest = "^7.1.2"
-meadowrun = "^0.2.4"
+# meadowrun = "^0.2.4"
+meadowrun = {git="https://github.com/hrichardlee/meadowrun.git", branch="run_map_cancellations"}
 
 
 [tool.poetry.dev-dependencies]
