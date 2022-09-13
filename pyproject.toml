@@ -36,7 +36,11 @@ classifiers = [
 python = "^3.8"
 pytest = "^7.1.2"
 # meadowrun = "^0.2.4"
-meadowrun = {git="https://github.com/hrichardlee/meadowrun.git", branch="run_map_cancellations"}
+# always specify git dependencies by rev - by branch works here, but any installs of pytest-cloudist will fail,
+# because pip resolves the branch to a rev on install, and then when trying to install from a requirements file,
+# detects a conflict between the already installed version (by rev) and the requested version (by branch)
+meadowrun = {git="https://github.com/hrichardlee/meadowrun.git", rev="9c0ec049d1014ccb599d108d95d35dc9f99b8c10"}
+
 
 
 [tool.poetry.dev-dependencies]
